@@ -7,7 +7,7 @@ const About = () => {
       {/* Hero Section */}
       <section className="py-20 px-4 relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"100\" height=\"100\" viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M10 10h80v80H10z\" fill=\"none\" stroke=\"%23ffffff\" stroke-width=\"0.5\"/%3E%3Cpath d=\"M20 20h60v60H20z\" fill=\"none\" stroke=\"%23ffffff\" stroke-width=\"0.3\"/%3E%3C/svg%3E')] bg-repeat"></div>
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%22100%22%20height%3D%22100%22%20viewBox%3D%220%200%20100%20100%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M10%2010h80v80H10z%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%220.5%22/%3E%3Cpath%20d%3D%22M20%2020h60v60H20z%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%220.3%22/%3E%3C/svg%3E')] bg-repeat"></div>
         </div>
         
         <div className="max-w-6xl mx-auto text-center relative z-10">
