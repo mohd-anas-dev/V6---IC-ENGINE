@@ -1,141 +1,229 @@
 
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Play, Wrench, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
+import { ChevronRight, Play, Wine as Engine } from 'lucide-react';
+import { PistonAnimation } from '../components/animations/EngineParts';
 
-const Index = () => {
+const HomePage: React.FC = () => {
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen flex flex-col">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black opacity-90"></div>
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-
-        {/* Main Content */}
-        <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
-          {/* Engine Animation Placeholder */}
-          <div className="mb-12">
-            <div className="w-32 h-32 mx-auto mb-8 relative">
-              <div className="w-full h-full rounded-full bg-gradient-to-r from-red-500 to-red-600 engine-glow flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-r from-gray-300 to-gray-400 animate-spin" style={{ animationDuration: '2s' }}>
-                  <div className="w-4 h-4 bg-red-500 rounded-full mt-6 ml-6"></div>
-                </div>
-              </div>
-              <div className="absolute inset-0 rounded-full border-2 border-gray-600 animate-pulse"></div>
+      <section className="h-screen relative flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-dark-asphalt bg-carbon-fiber opacity-80"></div>
+        
+        {/* Animated Engine Background Elements */}
+        <motion.div 
+          className="absolute top-1/3 left-1/4 w-20 h-20 bg-racing-red rounded-full opacity-20 blur-xl"
+          animate={{ scale: [1, 1.5, 1], opacity: [0.1, 0.3, 0.1] }}
+          transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="absolute top-2/3 right-1/4 w-32 h-32 bg-neon-blue rounded-full opacity-10 blur-xl"
+          animate={{ scale: [1, 1.3, 1], opacity: [0.05, 0.15, 0.05] }}
+          transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
+        />
+        
+        {/* Content */}
+        <div className="container mx-auto px-4 relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="flex items-center justify-center mb-6">
+              <Engine className="w-16 h-16 text-racing-red" />
             </div>
-          </div>
-
-          {/* Main Heading */}
-          <h1 className="font-['Orbitron'] text-5xl md:text-7xl font-black text-chrome mb-6 leading-tight">
-            FEEL THE
-            <span className="block text-transparent bg-gradient-to-r from-red-500 via-red-400 to-red-600 bg-clip-text">
-              POWER
-            </span>
-          </h1>
-
-          {/* Tagline */}
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 font-light tracking-wide">
-            The V6 Engine Project
-          </p>
-
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Link to="/hardware">
-              <Button className="group bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center space-x-3">
-                <Wrench className="w-6 h-6 group-hover:animate-spin" />
-                <span>Explore Mechanism</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-
-            <Link to="/demo">
-              <Button variant="outline" className="group border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center space-x-3">
-                <Play className="w-6 h-6 group-hover:animate-pulse" />
-                <span>Watch Demo</span>
-              </Button>
-            </Link>
-          </div>
-
-          {/* Specs Grid */}
-          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {[
-              { label: 'Cylinders', value: '6' },
-              { label: 'Horsepower', value: '300+' },
-              { label: 'RPM', value: '6000' },
-              { label: 'Compression', value: '10:1' }
-            ].map((spec, index) => (
-              <div key={index} className="dashboard-card text-center">
-                <div className="text-2xl font-bold text-red-400 font-['Orbitron']">{spec.value}</div>
-                <div className="text-sm text-gray-400 uppercase tracking-wide">{spec.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Smoke Effect */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900/50 to-transparent"></div>
-      </section>
-
-      {/* Quick Links Bento Grid */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 font-['Orbitron'] text-chrome">
-            Project Overview
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: 'Project Story',
-                description: 'Learn about our journey building this V6 engine',
-                link: '/about',
-                icon: '📖',
-                color: 'from-yellow-500 to-orange-500'
-              },
-              {
-                title: 'Meet the Team',
-                description: 'The engineers behind this project',
-                link: '/team',
-                icon: '👥',
-                color: 'from-blue-500 to-cyan-500'
-              },
-              {
-                title: 'Engine Parts',
-                description: 'Explore each component in detail',
-                link: '/hardware',
-                icon: '⚙️',
-                color: 'from-red-500 to-pink-500'
-              },
-              {
-                title: 'Live Demo',
-                description: 'See the engine in action',
-                link: '/demo',
-                icon: '🎬',
-                color: 'from-green-500 to-emerald-500'
-              },
-              {
-                title: 'Get in Touch',
-                description: 'Questions or collaboration?',
-                link: '/contact',
-                icon: '📧',
-                color: 'from-purple-500 to-violet-500'
-              },
-            ].map((item, index) => (
-              <Link key={index} to={item.link} className="group">
-                <div className="dashboard-card h-full hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
-                  <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${item.color} flex items-center justify-center text-2xl mb-4`}>
-                    {item.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-2 font-['Orbitron']">{item.title}</h3>
-                  <p className="text-gray-400">{item.description}</p>
-                  <ArrowRight className="w-5 h-5 text-gray-500 mt-4 group-hover:translate-x-2 transition-transform" />
-                </div>
+            
+            <motion.h1 
+              className="text-4xl md:text-6xl font-bold font-orbitron text-chrome-silver mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Feel the Power
+            </motion.h1>
+            
+            <motion.h2 
+              className="text-2xl md:text-3xl font-bebas text-metallic-grey mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              The V6 Engine Project
+            </motion.h2>
+            
+            {/* Animated Line */}
+            <motion.div 
+              className="h-1 w-24 bg-racing-red mx-auto mb-8"
+              initial={{ width: 0 }}
+              animate={{ width: 96 }}
+              transition={{ duration: 1, delay: 0.6 }}
+            />
+            
+            <motion.div 
+              className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              <Link 
+                to="/hardware" 
+                className="dashboard-button flex items-center"
+              >
+                Explore Mechanism <ChevronRight className="ml-2 w-4 h-4" />
               </Link>
-            ))}
+              <Link 
+                to="/demo" 
+                className="flex items-center text-chrome-silver hover:text-racing-red transition-all duration-300 font-orbitron"
+              >
+                <Play className="mr-2 w-5 h-5" /> Watch Demo
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+        
+        {/* Animated Scroll Indicator */}
+        <motion.div 
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+        >
+          <div className="w-6 h-10 border-2 border-metallic-grey rounded-full flex justify-center">
+            <motion.div 
+              className="w-1 h-3 bg-racing-red rounded-full mt-2"
+              animate={{ y: [0, 4, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+            />
+          </div>
+          <p className="text-xs text-metallic-grey mt-2 text-center font-orbitron">SCROLL</p>
+        </motion.div>
+      </section>
+      
+      {/* Quick Preview Section */}
+      <section className="py-20 bg-dark-asphalt-light blueprint-bg">
+        <div className="container mx-auto px-4">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl font-bold font-orbitron text-chrome-silver mb-4">Engine Components</h2>
+            <p className="text-metallic-grey max-w-2xl mx-auto">
+              Experience the perfect integration of mechanical precision and innovative design that powers our V6 engine.
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Component Preview 1 */}
+            <motion.div 
+              className="metal-panel p-6 flex flex-col items-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <PistonAnimation />
+              <h3 className="text-xl font-orbitron text-chrome-silver mt-4">Pistons</h3>
+              <p className="text-center text-sm text-metallic-grey mt-2">
+                High-performance pistons designed for optimal compression and durability.
+              </p>
+              <Link 
+                to="/hardware" 
+                className="mt-4 text-sm text-neon-blue hover:text-racing-red transition-colors flex items-center"
+              >
+                Learn more <ChevronRight className="w-4 h-4 ml-1" />
+              </Link>
+            </motion.div>
+            
+            {/* Component Preview 2 */}
+            <motion.div 
+              className="metal-panel p-6 flex flex-col items-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="h-40 flex items-center justify-center">
+                <img 
+                  src="https://images.pexels.com/photos/190574/pexels-photo-190574.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                  alt="Crankshaft" 
+                  className="h-32 object-contain"
+                />
+              </div>
+              <h3 className="text-xl font-orbitron text-chrome-silver mt-4">Crankshaft</h3>
+              <p className="text-center text-sm text-metallic-grey mt-2">
+                Precision-engineered crankshaft for smooth power delivery.
+              </p>
+              <Link 
+                to="/hardware" 
+                className="mt-4 text-sm text-neon-blue hover:text-racing-red transition-colors flex items-center"
+              >
+                Learn more <ChevronRight className="w-4 h-4 ml-1" />
+              </Link>
+            </motion.div>
+            
+            {/* Component Preview 3 */}
+            <motion.div 
+              className="metal-panel p-6 flex flex-col items-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="h-40 flex items-center justify-center">
+                <img 
+                  src="https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                  alt="Combustion Chamber" 
+                  className="h-32 object-contain"
+                />
+              </div>
+              <h3 className="text-xl font-orbitron text-chrome-silver mt-4">Combustion</h3>
+              <p className="text-center text-sm text-metallic-grey mt-2">
+                Advanced combustion chamber design for optimal fuel efficiency.
+              </p>
+              <Link 
+                to="/hardware" 
+                className="mt-4 text-sm text-neon-blue hover:text-racing-red transition-colors flex items-center"
+              >
+                Learn more <ChevronRight className="w-4 h-4 ml-1" />
+              </Link>
+            </motion.div>
+            
+            {/* Component Preview 4 */}
+            <motion.div 
+              className="metal-panel p-6 flex flex-col items-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <div className="h-40 flex items-center justify-center">
+                <img 
+                  src="https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                  alt="Valve System" 
+                  className="h-32 object-contain"
+                />
+              </div>
+              <h3 className="text-xl font-orbitron text-chrome-silver mt-4">Valve System</h3>
+              <p className="text-center text-sm text-metallic-grey mt-2">
+                Precision-timed valve system for optimal engine performance.
+              </p>
+              <Link 
+                to="/hardware" 
+                className="mt-4 text-sm text-neon-blue hover:text-racing-red transition-colors flex items-center"
+              >
+                Learn more <ChevronRight className="w-4 h-4 ml-1" />
+              </Link>
+            </motion.div>
+          </div>
+          
+          <div className="text-center mt-12">
+            <Link to="/demo" className="dashboard-button inline-flex items-center">
+              <Play className="mr-2 w-4 h-4" /> See it in action
+            </Link>
           </div>
         </div>
       </section>
@@ -143,4 +231,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default HomePage;

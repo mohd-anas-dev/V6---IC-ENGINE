@@ -124,6 +124,71 @@
   .metallic-glint:hover::before {
     transform: rotate(45deg) translateX(100%);
   }
+
+  .dashboard-button {
+    @apply px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold rounded-lg transition-all duration-300 hover:from-red-600 hover:to-red-700 hover:scale-105 shadow-lg hover:shadow-xl;
+  }
+
+  .metal-panel {
+    @apply bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+
+  .bg-dark-asphalt {
+    background-color: #1a1a1a;
+  }
+
+  .bg-dark-asphalt-light {
+    background-color: #2a2a2a;
+  }
+
+  .bg-carbon-fiber {
+    background-image: 
+      radial-gradient(circle at 25% 25%, #2c2c2c 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, #2c2c2c 2px, transparent 2px);
+    background-size: 20px 20px;
+  }
+
+  .blueprint-bg {
+    background-image: 
+      linear-gradient(rgba(0,191,255,0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,191,255,0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .text-chrome-silver {
+    background: linear-gradient(45deg, #c0c0c0, #ffffff, #c0c0c0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-metallic-grey {
+    color: #a0a0a0;
+  }
+
+  .text-racing-red {
+    color: #ff2e2e;
+  }
+
+  .text-neon-blue {
+    color: #00bfff;
+  }
+
+  .bg-racing-red {
+    background-color: #ff2e2e;
+  }
+
+  .bg-neon-blue {
+    background-color: #00bfff;
+  }
+
+  .font-orbitron {
+    font-family: 'Orbitron', monospace;
+  }
+
+  .font-bebas {
+    font-family: 'Bebas Neue', cursive;
+  }
 }
 
 @layer utilities {
