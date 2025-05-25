@@ -112,10 +112,10 @@ const HardwarePage: React.FC = () => {
             <div className="lg:w-1/2">
               <h2 className="text-2xl font-orbitron text-chrome-silver mb-4">V6 Engine Architecture</h2>
               <p className="text-metallic-grey mb-4">
-                Our V6 engine features a 60-degree V configuration, balancing compact design with smooth operation. The engine block is cast from high-strength aluminum alloy with cast-iron cylinder liners for durability.
+              Our V6 engine model features a 60-degree V configuration, offering a compact layout and visually smooth mechanical motion. The engine block is 3D-printed using durable plastic filament, designed to replicate real engine geometry.
               </p>
               <p className="text-metallic-grey mb-4">
-                The 3.5-liter displacement delivers an optimal balance of power and efficiency, while the quad-cam design allows for precise valve timing across the RPM range.
+              Though non-functional in combustion, the model simulates a 3.5-liter V6 with a quad-cam layout, showcasing realistic valve movement and rotational dynamics powered by a 9V DC motor.
               </p>
               
               <div className="mt-6 bg-engine-black p-4 rounded-lg border border-metallic-grey">
@@ -135,15 +135,15 @@ const HardwarePage: React.FC = () => {
                   </li>
                   <li className="flex justify-between">
                     <span className="text-metallic-grey">Compression Ratio</span>
-                    <span className="text-chrome-silver">10.5:1</span>
+                    <span className="text-chrome-silver">Non-functional (visual model only)</span>
                   </li>
                   <li className="flex justify-between">
                     <span className="text-metallic-grey">Power Output</span>
-                    <span className="text-chrome-silver">280 HP @ 6500 RPM</span>
+                    <span className="text-chrome-silver">Powered by a 100 RPM DC motor</span>
                   </li>
                   <li className="flex justify-between">
                     <span className="text-metallic-grey">Torque</span>
-                    <span className="text-chrome-silver">350 Nm @ 4000 RPM</span>
+                    <span className="text-chrome-silver">Not measured, simulated rotation.</span>
                   </li>
                 </ul>
               </div>
@@ -151,7 +151,7 @@ const HardwarePage: React.FC = () => {
             
             <div className="lg:w-1/2 flex justify-center items-center">
               <img 
-                src="https://images.pexels.com/photos/3156381/pexels-photo-3156381.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                src="https://i.postimg.cc/tgyT7B5G/V6-IC-ENGINE.png" 
                 alt="V6 Engine" 
                 className="rounded-lg max-h-96 object-cover"
               />

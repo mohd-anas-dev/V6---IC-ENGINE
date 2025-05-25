@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Wrench, Cpu, PenTool, LineChart, Users, Github, Linkedin, Mail } from 'lucide-react';
@@ -6,36 +5,36 @@ import { Wrench, Cpu, PenTool, LineChart, Users, Github, Linkedin, Mail } from '
 const TeamPage: React.FC = () => {
   const teamMembers = [
     {
-      name: "Alex Morgan",
-      role: "Lead Engineer",
-      photo: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      expertise: "Mechanical Design",
+      name: "Mohammed Arsalan",
+      role: "Project Researcher / Documentation Specialist",
+      photo: "https://i.postimg.cc/3wq1C0b1/arsalan2.jpg",
+      expertise: "Research and Documentation",
       icon: <Wrench className="h-5 w-5" />,
-      bio: "Alex specializes in precision mechanical design with over 10 years of experience in automotive engineering."
+      bio: "Arsalan supports the team by researching engine designs and helping prepare project documentation."
     },
     {
-      name: "Sara Chen",
-      role: "Electronics Specialist",
-      photo: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      name: "Mohammed Anas",
+      role: " Mechanical Assembly Lead & Web Developer",
+      photo: "https://i.postimg.cc/ZY8P0QZV/IMG-20241219-WA0011.jpg",
       expertise: "Control Systems",
       icon: <Cpu className="h-5 w-5" />,
-      bio: "Sara develops the electronic control systems that monitor and regulate engine performance."
+      bio: "Mohd Anas leads the assembly of parts, ensuring the engine prototype runs smoothly and making adjustments as needed."
     },
     {
-      name: "Marcus Williams",
-      role: "CAD Designer",
-      photo: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      expertise: "3D Modeling",
+      name: "Sayed Muhammad Anas",
+      role: "Electrical / Motor Integration Engineer",
+      photo: "https://i.postimg.cc/T1McBMxW/Sayed-Anas2.jpg",
+      expertise: "Motor Engineering",
       icon: <PenTool className="h-5 w-5" />,
-      bio: "Marcus creates precise 3D models and technical drawings for all engine components."
+      bio: "Sayed Anas manages the integration of the 12V DC motor and power supply, ensuring reliable operation of the engine prototype."
     },
     {
-      name: "Jasmine Patel",
-      role: "Performance Analyst",
-      photo: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      expertise: "Efficiency Optimization",
+      name: "Mohammed Zuhaib Khan",
+      role: "FUSION 360 Designer / Modeler",
+      photo: "https://i.postimg.cc/1z7CCj4p/Zuhaib.jpg",
+      expertise: "3D Modeling",
       icon: <LineChart className="h-5 w-5" />,
-      bio: "Jasmine analyzes performance data to optimize efficiency and power delivery of the engine."
+      bio: "Zuhaib creates and refines 3D models of engine parts, making sure they fit well and print correctly."
     }
   ];
 
@@ -65,8 +64,11 @@ const TeamPage: React.FC = () => {
         >
           <div className="md:w-1/3 flex justify-center">
             <div className="relative">
-              <Users className="w-24 h-24 text-neon-blue" />
-              <div className="absolute inset-0 bg-neon-blue opacity-20 blur-xl rounded-full"></div>
+              <img 
+                src="https://i.postimg.cc/3Nq33BLp/BMES-TEAM.jpg" 
+                alt="Team Collaboration" 
+                className="w-65 h-70 object-cover rounded-full border-2 border-neon-blue shadow-[0_0_15px_rgba(0,191,255,0.5)]"
+              />
             </div>
           </div>
           <div className="md:w-2/3">

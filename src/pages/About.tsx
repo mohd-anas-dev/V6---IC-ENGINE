@@ -31,26 +31,26 @@ const About = () => {
               {
                 phase: "01",
                 title: "Project Inspiration",
-                description: "Born from a passion for automotive excellence and precision engineering.",
-                details: "The vision began with studying high-performance racing engines and identifying opportunities for innovation in V6 design."
+                description: "Inspired by a passion for engines and mechanical design.",
+                details: "The project started with exploring V6 engine models and experimenting with 3D printing techniques to create a functional scale prototype."
               },
               {
                 phase: "02", 
                 title: "Design & Research",
-                description: "Months of CAD modeling and thermodynamic calculations.",
-                details: "Extensive research into materials, combustion chamber geometry, and valve timing systems to optimize performance."
+                description: "Weeks of FUSION 360 design and iterative prototyping.",
+                details: "Research focused on part geometry, material compatibility, and realistic valve movement to achieve smooth mechanical function and visual accuracy."
               },
               {
                 phase: "03",
                 title: "Hardware Assembly", 
-                description: "Precision machining and meticulous component integration.",
-                details: "Each component was manufactured to exact specifications using advanced CNC machining and quality control processes."
+                description: "Careful 3D printing and thoughtful assembly of components.",
+                details: "Parts were printed using standard plastic filament with attention to fit, alignment, and smooth mechanical movement during assembly."
               },
               {
                 phase: "04",
                 title: "Testing & Completion",
-                description: "Rigorous testing protocols and performance validation.", 
-                details: "Comprehensive dyno testing, thermal analysis, and endurance runs to validate design specifications."
+                description: "Basic functional testing and motion validation.", 
+                details: "The engine's moving parts were tested using a 9V DC motor to ensure smooth rotation, proper alignment, and consistent mechanical motion under repeated operation."
               }
             ].map((item, index) => (
               <div key={index} className="relative">

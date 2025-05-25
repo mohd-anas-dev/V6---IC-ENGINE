@@ -1,9 +1,7 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronRight, Play, Settings } from 'lucide-react';
-import { PistonAnimation } from '../components/animations/EngineParts';
 
 const HomePage: React.FC = () => {
   return (
@@ -25,7 +23,7 @@ const HomePage: React.FC = () => {
         />
         
         {/* Content */}
-        <div className="container mx-auto px-4 relative z-10 text-center">
+        <div className="relative z-10 text-center px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -125,7 +123,13 @@ const HomePage: React.FC = () => {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <PistonAnimation />
+              <div className="h-40 flex items-center justify-center">
+                <img 
+                  src="https://i.postimg.cc/Rh4GDLS1/Chat-GPT-Image-May-26-2025-12-03-52-AM.png" 
+                  alt="Pistons" 
+                  className="h-32 object-contain rounded-2xl"
+                />
+              </div>
               <h3 className="text-xl font-orbitron text-chrome-silver mt-4">Pistons</h3>
               <p className="text-center text-sm text-metallic-grey mt-2">
                 High-performance pistons designed for optimal compression and durability.
@@ -148,7 +152,7 @@ const HomePage: React.FC = () => {
             >
               <div className="h-40 flex items-center justify-center">
                 <img 
-                  src="https://i.postimg.cc/nVSJqZ8T/Chat-GPT-Image-May-25-2025-06-35-58-PM.png" 
+                  src="https://i.postimg.cc/Kzy51DMX/Chat-GPT-Image-May-26-2025-12-06-38-AM.png" 
                   alt="Crankshaft" 
                   className="h-32 object-contain rounded-2xl"
                 />
@@ -175,7 +179,7 @@ const HomePage: React.FC = () => {
             >
               <div className="h-40 flex items-center justify-center">
                 <img 
-                  src="https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                  src="https://i.postimg.cc/s2g6Vc7T/Detailed-Engine-Model-in-3-D.png" 
                   alt="Combustion Chamber" 
                   className="h-32 object-contain rounded-2xl"
                 />
@@ -202,7 +206,7 @@ const HomePage: React.FC = () => {
             >
               <div className="h-40 flex items-center justify-center">
                 <img 
-                  src="https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                  src="https://i.postimg.cc/c1tsx7c1/Chat-GPT-Image-May-25-2025-11-57-02-PM.png" 
                   alt="Valve System" 
                   className="h-32 object-contain rounded-2xl"
                 />

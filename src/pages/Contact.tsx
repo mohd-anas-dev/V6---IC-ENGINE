@@ -74,8 +74,8 @@ const ContactPage: React.FC = () => {
               <Mail className="text-racing-red w-6 h-6" />
             </div>
             <h3 className="text-lg font-orbitron text-chrome-silver mb-2">Email</h3>
-            <p className="text-metallic-grey">info@v6engineproject.com</p>
-            <p className="text-metallic-grey">support@v6engineproject.com</p>
+            <p className="text-metallic-grey">ff2974247@gmail.com</p>
+            
           </motion.div>
           
           <motion.div 
@@ -89,8 +89,8 @@ const ContactPage: React.FC = () => {
               <MapPin className="text-neon-blue w-6 h-6" />
             </div>
             <h3 className="text-lg font-orbitron text-chrome-silver mb-2">Location</h3>
-            <p className="text-metallic-grey">123 Engineering Drive</p>
-            <p className="text-metallic-grey">Detroit, MI 48226</p>
+            <p className="text-metallic-grey">Manipal University</p>
+            <p className="text-metallic-grey">Higher Academy of Engineering and Technology, Dubai</p>
           </motion.div>
           
           <motion.div 
@@ -104,8 +104,8 @@ const ContactPage: React.FC = () => {
               <Phone className="text-performance-yellow w-6 h-6" />
             </div>
             <h3 className="text-lg font-orbitron text-chrome-silver mb-2">Phone</h3>
-            <p className="text-metallic-grey">+1 (555) 123-4567</p>
-            <p className="text-metallic-grey">Mon-Fri, 9am-5pm EST</p>
+            <p className="text-metallic-grey">056- 893 6869</p>
+            <p className="text-metallic-grey">Mon-Fri, 9am-5pm GST</p>
           </motion.div>
           
           <motion.div 
@@ -120,7 +120,7 @@ const ContactPage: React.FC = () => {
             </div>
             <h3 className="text-lg font-orbitron text-chrome-silver mb-2">Hours</h3>
             <p className="text-metallic-grey">Monday - Friday</p>
-            <p className="text-metallic-grey">9:00 AM - 5:00 PM EST</p>
+            <p className="text-metallic-grey">9:00 AM - 5:00 PM GST</p>
           </motion.div>
         </div>
       </section>
@@ -138,7 +138,7 @@ const ContactPage: React.FC = () => {
           
           <form onSubmit={handleSubmit} className="metal-panel p-6">
             <div className="mb-4">
-              <label htmlFor="name" className="block text-sm font-orbitron text-metallic-grey mb-1">
+            <label htmlFor="name" className="block text-sm font-orbitron text-black mb-1">
                 Your Name
               </label>
               <input
@@ -153,7 +153,7 @@ const ContactPage: React.FC = () => {
             </div>
             
             <div className="mb-4">
-              <label htmlFor="email" className="block text-sm font-orbitron text-metallic-grey mb-1">
+              <label htmlFor="email" className="block text-sm font-orbitron text-black mb-1">
                 Email Address
               </label>
               <input
@@ -168,7 +168,7 @@ const ContactPage: React.FC = () => {
             </div>
             
             <div className="mb-4">
-              <label htmlFor="subject" className="block text-sm font-orbitron text-metallic-grey mb-1">
+              <label htmlFor="subject" className="block text-sm font-orbitron text-black mb-1">
                 Subject
               </label>
               <input
@@ -183,7 +183,7 @@ const ContactPage: React.FC = () => {
             </div>
             
             <div className="mb-6">
-              <label htmlFor="message" className="block text-sm font-orbitron text-metallic-grey mb-1">
+              <label htmlFor="message" className="block text-sm font-orbitron text-black mb-1">
                 Message
               </label>
               <textarea
@@ -222,13 +222,13 @@ const ContactPage: React.FC = () => {
               <div className="absolute inset-0 bg-dark-asphalt">
                 <div className="h-full w-full flex items-center justify-center">
                   <img 
-                    src="https://images.pexels.com/photos/8936026/pexels-photo-8936026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                    src="https://i.postimg.cc/qRsxyDfc/manipal.png" 
                     alt="Map Location" 
                     className="w-full h-full object-cover opacity-60"
                   />
                   <div className="absolute top-4 left-4 bg-engine-black bg-opacity-70 rounded-md p-2">
-                    <p className="text-chrome-silver font-orbitron text-sm">V6 Engine Project</p>
-                    <p className="text-metallic-grey text-xs">123 Engineering Drive, Detroit</p>
+                    <p className="text-chrome-silver font-orbitron text-sm">Manipal University, Dubai</p>
+                    <p className="text-metallic-grey text-xs">V6 - IC Engine</p>
                   </div>
                   
                   {/* GPS Pin */}
@@ -243,8 +243,8 @@ const ContactPage: React.FC = () => {
               
               {/* GPS-style overlay elements */}
               <div className="absolute bottom-0 left-0 right-0 h-8 bg-engine-black flex items-center justify-between px-4">
-                <span className="text-xs text-neon-blue font-orbitron">Detroit, MI</span>
-                <span className="text-xs text-chrome-silver font-orbitron">2.5 mi</span>
+                <span className="text-xs text-neon-blue font-orbitron">United Arab Emirates, Dubai</span>
+                <span className="text-xs text-chrome-silver font-orbitron">20.8 mi</span>
               </div>
             </div>
           </div>
