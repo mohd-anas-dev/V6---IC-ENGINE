@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ChevronRight, Play, Wine as Engine } from 'lucide-react';
+import { ChevronRight, Play, Settings } from 'lucide-react';
 import { PistonAnimation } from '../components/animations/EngineParts';
 
 const HomePage: React.FC = () => {
@@ -32,7 +32,7 @@ const HomePage: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <div className="flex items-center justify-center mb-6">
-              <Engine className="w-16 h-16 text-racing-red" />
+              <Settings className="w-16 h-16 text-racing-red" />
             </div>
             
             <motion.h1 

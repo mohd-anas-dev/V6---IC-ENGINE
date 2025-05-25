@@ -1,227 +1,338 @@
 
-import { useState } from 'react';
-import { Play, Pause, Volume2, VolumeX, RotateCcw } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Slider } from '@/components/ui/slider';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Play, Pause, Volume2, VolumeX, Gauge } from 'lucide-react';
 
-const Demo = () => {
+const DemoPage: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-  const [rpm, setRpm] = useState([0]);
-  const [volume, setVolume] = useState([50]);
-
-  const handleStartEngine = () => {
+  const [isMuted, setIsMuted] = useState(true);
+  const [rpm, setRpm] = useState(0);
+  
+  const togglePlay = () => {
     setIsPlaying(!isPlaying);
+    
+    // Simulate RPM increase/decrease
     if (!isPlaying) {
-      // Simulate engine startup
+      let currentRpm = 0;
       const interval = setInterval(() => {
-        setRpm(prev => {
-          const newRpm = Math.min(prev[0] + 100, 6000);
-          if (newRpm >= 6000) {
-            clearInterval(interval);
-          }
-          return [newRpm];
-        });
-      }, 100);
+        currentRpm += 500;
+        if (currentRpm > 4000) {
+          clearInterval(interval);
+          return;
+        }
+        setRpm(currentRpm);
+      }, 500);
     } else {
-      setRpm([0]);
+      let currentRpm = rpm;
+      const interval = setInterval(() => {
+        currentRpm -= 500;
+        if (currentRpm <= 0) {
+          clearInterval(interval);
+          currentRpm = 0;
+          return;
+        }
+        setRpm(currentRpm);
+      }, 300);
     }
   };
-
-  const resetDemo = () => {
-    setIsPlaying(false);
-    setRpm([0]);
+  
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
   };
-
+  
+  // Calculate RPM gauge rotation
+  const rpmRotation = (rpm / 8000) * 270 - 135; // -135 to 135 degrees
+  
   return (
-    <div className="min-h-screen pt-16">
-      {/* Hero Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-black font-['Orbitron'] text-chrome mb-6">
-            ENGINE
-            <span className="block text-transparent bg-gradient-to-r from-red-500 to-red-600 bg-clip-text">
-              DEMO
-            </span>
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-12">
-            Experience the power and precision of our V6 engine in action. Watch as each component 
-            works in perfect harmony to deliver exceptional performance.
-          </p>
-        </div>
-      </section>
-
-      {/* Video/Demo Section */}
-      <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto">
+    <div className="page-container">
+      {/* Page Header */}
+      <motion.div 
+        className="mb-12 text-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="text-4xl font-bold font-orbitron text-chrome-silver mb-4">Engine Demo</h1>
+        <div className="h-1 w-24 bg-racing-red mx-auto mb-6"></div>
+        <p className="text-metallic-grey max-w-2xl mx-auto">
+          Watch our V6 engine in action with this interactive demonstration. Start the engine to see the components working in perfect harmony.
+        </p>
+      </motion.div>
+      
+      {/* Demo Section */}
+      <section className="mb-16">
+        <div className="bg-dark-asphalt-light border border-metallic-grey rounded-lg overflow-hidden">
           {/* Video Container */}
-          <div className="relative aspect-video bg-gradient-to-br from-gray-900 to-black rounded-lg overflow-hidden shadow-2xl border border-gray-600">
-            {/* Placeholder Video */}
-            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
-              <div className="text-center">
-                <div className={`w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-r from-red-500 to-red-600 flex items-center justify-center ${isPlaying ? 'engine-glow animate-spin' : ''}`}>
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-gray-300 to-gray-400 flex items-center justify-center">
-                    {isPlaying ? (
-                      <div className="w-4 h-4 bg-red-500 rounded-full animate-pulse"></div>
-                    ) : (
-                      <Play className="w-8 h-8 text-gray-600" />
-                    )}
-                  </div>
+          <div className="aspect-w-16 aspect-h-9 relative">
+            {/* Placeholder for video - in a real implementation, this would be a video */}
+            <div className="absolute inset-0 flex items-center justify-center bg-engine-black">
+              <img 
+                src="https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                alt="Engine Demonstration" 
+                className="w-full h-full object-cover opacity-60"
+              />
+              
+              {/* Center play button overlay */}
+              {!isPlaying && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <motion.div 
+                    className="w-20 h-20 rounded-full bg-racing-red bg-opacity-80 flex items-center justify-center cursor-pointer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={togglePlay}
+                  >
+                    <Play className="h-10 w-10 text-white" />
+                  </motion.div>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2 font-['Orbitron']">
-                  {isPlaying ? 'Engine Running' : 'V6 Engine Demo'}
-                </h3>
-                <p className="text-gray-400">
-                  {isPlaying ? 'Watch the pistons fire in sequence' : 'Click Start Engine to begin demo'}
-                </p>
-              </div>
-            </div>
-
-            {/* Video Overlay Controls */}
-            <div className="absolute bottom-4 left-4 right-4">
-              <div className="bg-black/80 backdrop-blur-sm rounded-lg p-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <Button
-                      onClick={handleStartEngine}
-                      className={`w-12 h-12 rounded-full ${isPlaying ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'} flex items-center justify-center`}
-                    >
-                      {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
-                    </Button>
-                    
-                    <Button
-                      onClick={resetDemo}
-                      variant="outline"
-                      className="w-12 h-12 rounded-full border-gray-600 hover:bg-gray-700"
-                    >
-                      <RotateCcw className="w-5 h-5" />
-                    </Button>
-                  </div>
-
-                  <div className="flex items-center space-x-4">
-                    <Button
-                      onClick={() => setIsMuted(!isMuted)}
-                      variant="ghost"
-                      className="w-10 h-10 rounded-full"
-                    >
-                      {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-                    </Button>
-                    
-                    <div className="w-20">
-                      <Slider
-                        value={volume}
-                        onValueChange={setVolume}
-                        max={100}
-                        step={1}
-                        className="w-full"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              )}
+              
+              {/* Engine running animation overlay */}
+              {isPlaying && (
+                <motion.div
+                  className="absolute inset-0 bg-racing-red opacity-10"
+                  animate={{ opacity: [0.1, 0.2, 0.1] }}
+                  transition={{ repeat: Infinity, duration: 0.5 }}
+                />
+              )}
             </div>
           </div>
-
-          {/* Engine Controls */}
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* RPM Gauge */}
-            <div className="dashboard-card">
-              <h3 className="text-xl font-bold text-chrome mb-4 font-['Orbitron']">RPM Monitor</h3>
-              <div className="relative">
-                <div className="w-48 h-48 mx-auto relative">
-                  {/* Gauge Background */}
-                  <svg className="w-full h-full" viewBox="0 0 200 200">
-                    <circle
-                      cx="100"
-                      cy="100"
-                      r="80"
-                      fill="none"
-                      stroke="#374151"
-                      strokeWidth="4"
-                    />
-                    <circle
-                      cx="100"
-                      cy="100"
-                      r="80"
-                      fill="none"
-                      stroke="#ef4444"
-                      strokeWidth="4"
-                      strokeDasharray={`${(rpm[0] / 6000) * 502.65} 502.65`}
-                      strokeLinecap="round"
-                      transform="rotate(-90 100 100)"
-                      className="transition-all duration-300"
-                    />
-                  </svg>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-white font-['Orbitron']">
-                        {rpm[0].toLocaleString()}
-                      </div>
-                      <div className="text-sm text-gray-400">RPM</div>
-                    </div>
+          
+          {/* Controls */}
+          <div className="p-4 carbon-fiber-bg">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              {/* Play/Pause Button */}
+              <button 
+                onClick={togglePlay} 
+                className="dashboard-button flex items-center"
+              >
+                {isPlaying ? (
+                  <>
+                    <Pause className="mr-2 h-4 w-4" /> Stop Engine
+                  </>
+                ) : (
+                  <>
+                    <Play className="mr-2 h-4 w-4" /> Start Engine
+                  </>
+                )}
+              </button>
+              
+              {/* Sound Toggle */}
+              <button 
+                onClick={toggleMute} 
+                className="p-2 text-metallic-grey hover:text-racing-red transition-colors"
+                aria-label={isMuted ? "Unmute" : "Mute"}
+              >
+                {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+              </button>
+              
+              {/* RPM Gauge */}
+              <div className="flex-grow flex justify-end items-center">
+                <div className="relative w-32 h-16">
+                  {/* Gauge background */}
+                  <div className="absolute top-0 left-0 w-full h-full rounded-t-full overflow-hidden border-t border-l border-r border-metallic-grey bg-engine-black"></div>
+                  
+                  {/* RPM tick marks */}
+                  {Array.from({ length: 9 }).map((_, i) => (
+                    <div 
+                      key={i} 
+                      className="absolute w-1 h-2 bg-metallic-grey"
+                      style={{
+                        left: `${14 + i * 9}%`,
+                        top: '15%',
+                      }}
+                    ></div>
+                  ))}
+                  
+                  {/* RPM labels */}
+                  <div className="absolute left-2 top-4 text-[8px] text-metallic-grey">0</div>
+                  <div className="absolute right-2 top-4 text-[8px] text-metallic-grey">8k</div>
+                  <div className="absolute left-1/2 top-1 -translate-x-1/2 text-[8px] text-metallic-grey">4k</div>
+                  
+                  {/* Gauge needle */}
+                  <motion.div 
+                    className="absolute left-1/2 top-[80%] w-[1px] h-10 bg-racing-red origin-bottom"
+                    style={{ rotate: `${rpmRotation}deg` }}
+                    initial={{ rotate: -135 }}
+                  ></motion.div>
+                  
+                  {/* Gauge center */}
+                  <div className="absolute left-1/2 top-[80%] w-3 h-3 rounded-full bg-engine-black border border-metallic-grey -translate-x-1/2"></div>
+                  
+                  {/* RPM digital readout */}
+                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 font-orbitron text-neon-blue text-sm flex items-center">
+                    <Gauge className="w-4 h-4 mr-1" />
+                    {rpm.toLocaleString()} RPM
                   </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Engine Stats */}
-            <div className="dashboard-card">
-              <h3 className="text-xl font-bold text-chrome mb-4 font-['Orbitron']">Engine Status</h3>
-              <div className="space-y-4">
-                {[
-                  { label: 'Temperature', value: `${Math.round(20 + (rpm[0] / 6000) * 80)}°C`, status: rpm[0] > 4000 ? 'warning' : 'normal' },
-                  { label: 'Oil Pressure', value: `${Math.round(30 + (rpm[0] / 6000) * 40)} PSI`, status: 'normal' },
-                  { label: 'Fuel Flow', value: `${Math.round(5 + (rpm[0] / 6000) * 15)} L/h`, status: 'normal' },
-                  { label: 'Power Output', value: `${Math.round((rpm[0] / 6000) * 300)} HP`, status: rpm[0] > 5000 ? 'excellent' : 'normal' }
-                ].map((stat, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
-                    <span className="text-gray-300">{stat.label}</span>
-                    <div className="flex items-center space-x-2">
-                      <span className="font-semibold text-white font-['Orbitron']">{stat.value}</span>
-                      <div className={`w-3 h-3 rounded-full ${
-                        stat.status === 'excellent' ? 'bg-green-400' :
-                        stat.status === 'warning' ? 'bg-yellow-400' : 'bg-blue-400'
-                      } ${isPlaying ? 'animate-pulse' : ''}`}></div>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Performance Data */}
-      <section className="py-20 px-4 bg-gradient-to-r from-gray-900/50 to-black/50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 font-['Orbitron'] text-chrome">
-            Performance Data
-          </h2>
+      
+      {/* Engine Specs */}
+      <section>
+        <h2 className="section-title">Performance Specifications</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <motion.div 
+            className="bento-card"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-xl font-orbitron text-racing-red mb-2">280 HP</h3>
+            <p className="text-sm text-metallic-grey">Maximum Power @ 6500 RPM</p>
+            <div className="w-full h-2 bg-engine-black mt-4 rounded-full overflow-hidden">
+              <motion.div 
+                className="h-full bg-racing-red"
+                initial={{ width: 0 }}
+                whileInView={{ width: '85%' }}
+                transition={{ duration: 1, delay: 0.5 }}
+                viewport={{ once: true }}
+              ></motion.div>
+            </div>
+          </motion.div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { label: 'Max RPM', value: '6000', unit: 'RPM' },
-              { label: 'Peak Power', value: '300', unit: 'HP' },
-              { label: 'Peak Torque', value: '350', unit: 'lb-ft' },
-              { label: 'Redline', value: '6500', unit: 'RPM' },
-              { label: '0-60 mph', value: '5.2', unit: 'sec' },
-              { label: 'Top Speed', value: '155', unit: 'mph' },
-              { label: 'Fuel Economy', value: '25', unit: 'mpg' },
-              { label: 'Displacement', value: '3.5', unit: 'L' }
-            ].map((metric, index) => (
-              <div key={index} className="dashboard-card text-center">
-                <div className="text-2xl font-bold text-red-400 font-['Orbitron'] mb-1">
-                  {metric.value}
-                  <span className="text-sm text-gray-400 ml-1">{metric.unit}</span>
-                </div>
-                <div className="text-sm text-gray-400 uppercase tracking-wide">{metric.label}</div>
-              </div>
-            ))}
-          </div>
+          <motion.div 
+            className="bento-card"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-xl font-orbitron text-neon-blue mb-2">350 Nm</h3>
+            <p className="text-sm text-metallic-grey">Maximum Torque @ 4000 RPM</p>
+            <div className="w-full h-2 bg-engine-black mt-4 rounded-full overflow-hidden">
+              <motion.div 
+                className="h-full bg-neon-blue"
+                initial={{ width: 0 }}
+                whileInView={{ width: '70%' }}
+                transition={{ duration: 1, delay: 0.6 }}
+                viewport={{ once: true }}
+              ></motion.div>
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            className="bento-card"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-xl font-orbitron text-performance-yellow mb-2">10.5:1</h3>
+            <p className="text-sm text-metallic-grey">Compression Ratio</p>
+            <div className="w-full h-2 bg-engine-black mt-4 rounded-full overflow-hidden">
+              <motion.div 
+                className="h-full bg-performance-yellow"
+                initial={{ width: 0 }}
+                whileInView={{ width: '60%' }}
+                transition={{ duration: 1, delay: 0.7 }}
+                viewport={{ once: true }}
+              ></motion.div>
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            className="bento-card"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-xl font-orbitron text-chrome-silver mb-2">7500 RPM</h3>
+            <p className="text-sm text-metallic-grey">Redline</p>
+            <div className="w-full h-2 bg-engine-black mt-4 rounded-full overflow-hidden">
+              <motion.div 
+                className="h-full bg-chrome-silver"
+                initial={{ width: 0 }}
+                whileInView={{ width: '90%' }}
+                transition={{ duration: 1, delay: 0.8 }}
+                viewport={{ once: true }}
+              ></motion.div>
+            </div>
+          </motion.div>
         </div>
+        
+        {/* Performance Graph - Simplified Version */}
+        <motion.div 
+          className="mt-12 p-6 metal-panel"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-xl font-orbitron text-chrome-silver mb-6">Power & Torque Curve</h3>
+          
+          <div className="h-64 relative bg-dark-asphalt rounded-lg p-4">
+            {/* Y-axis label */}
+            <div className="absolute -left-10 top-1/2 -rotate-90 text-xs text-metallic-grey">Power / Torque</div>
+            
+            {/* X-axis label */}
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-xs text-metallic-grey mt-2">RPM (x1000)</div>
+            
+            {/* X-axis ticks */}
+            <div className="absolute left-0 right-0 bottom-0 flex justify-between px-4">
+              {[1, 2, 3, 4, 5, 6, 7].map((tick) => (
+                <div key={tick} className="text-[10px] text-metallic-grey">{tick}</div>
+              ))}
+            </div>
+            
+            {/* Grid lines */}
+            <div className="absolute inset-0 grid grid-cols-6 grid-rows-4">
+              {Array.from({ length: 35 }).map((_, i) => (
+                <div key={i} className="border-b border-r border-engine-black"></div>
+              ))}
+            </div>
+            
+            {/* Power Curve */}
+            <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <motion.path 
+                d="M0,90 C10,80 20,70 30,50 C40,30 50,20 70,10 C80,5 90,10 100,20" 
+                fill="none" 
+                stroke="#FF2E2E" 
+                strokeWidth="1.5"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                transition={{ duration: 2 }}
+                viewport={{ once: true }}
+              />
+              <circle cx="70" cy="10" r="2" fill="#FF2E2E" />
+            </svg>
+            
+            {/* Torque Curve */}
+            <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <motion.path 
+                d="M0,70 C10,50 20,30 30,20 C40,15 50,15 70,30 C80,40 90,50 100,60" 
+                fill="none" 
+                stroke="#00BFFF" 
+                strokeWidth="1.5"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                transition={{ duration: 2, delay: 0.5 }}
+                viewport={{ once: true }}
+              />
+              <circle cx="30" cy="20" r="2" fill="#00BFFF" />
+            </svg>
+            
+            {/* Legend */}
+            <div className="absolute top-2 right-2 flex flex-col gap-2">
+              <div className="flex items-center">
+                <div className="w-3 h-3 bg-racing-red mr-2"></div>
+                <span className="text-xs text-metallic-grey">Power</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 bg-neon-blue mr-2"></div>
+                <span className="text-xs text-metallic-grey">Torque</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </section>
     </div>
   );
 };
 
-export default Demo;
+export default DemoPage;
