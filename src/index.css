@@ -41,10 +41,24 @@
   * {
     @apply border-border;
   }
+  
+  html {
+    @apply bg-background;
+    background: #121212;
+    overscroll-behavior: none;
+  }
+  
   body {
     @apply bg-background text-foreground font-poppins;
     background: linear-gradient(135deg, #121212 0%, #1f1f1f 100%);
     min-height: 100vh;
+    overscroll-behavior: none;
+    overflow-x: hidden;
+  }
+  
+  #root {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #121212 0%, #1f1f1f 100%);
   }
   
   h1, h2, h3, h4, h5, h6 {
