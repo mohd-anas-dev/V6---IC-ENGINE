@@ -2,7 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './layouts/Layout';
-import HomePage from './pages/HomePage';
+import HomePage from './pages/Index';
 import AboutPage from './pages/About';
 import TeamPage from './pages/Team';
 import HardwarePage from './pages/Hardware';

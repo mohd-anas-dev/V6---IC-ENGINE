@@ -42,13 +42,13 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-['Poppins'];
+    @apply bg-background text-foreground font-poppins;
     background: linear-gradient(135deg, #121212 0%, #1f1f1f 100%);
     min-height: 100vh;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-['Orbitron'];
+    @apply font-orbitron;
   }
 }
 
@@ -56,7 +56,7 @@
   .dashboard-button {
     @apply bg-engine-black text-white border border-metallic-grey rounded-md px-4 py-2 
            transition-all duration-300 hover:bg-racing-red hover:border-chrome-silver 
-           hover:shadow-red-glow focus:outline-none font-orbitron;
+           focus:outline-none font-orbitron;
   }
 
   .bento-grid {
@@ -65,7 +65,7 @@
 
   .bento-card {
     @apply bg-engine-black border border-metallic-grey rounded-lg p-4 
-           transition-all duration-300 hover:border-neon-blue hover:shadow-neon
+           transition-all duration-300 hover:border-neon-blue
            bg-opacity-80 backdrop-blur-sm;
   }
 
@@ -75,11 +75,19 @@
   }
 
   .blueprint-bg {
-    @apply bg-dark-asphalt bg-blueprint bg-opacity-10;
+    @apply bg-dark-asphalt bg-opacity-10;
+    background-image: 
+      linear-gradient(rgba(0,191,255,0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,191,255,0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
   }
 
   .carbon-fiber-bg {
-    @apply bg-engine-black bg-carbon-fiber;
+    @apply bg-engine-black;
+    background-image: 
+      radial-gradient(circle at 25% 25%, #2c2c2c 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, #2c2c2c 2px, transparent 2px);
+    background-size: 20px 20px;
   }
 
   .nav-link {
@@ -98,100 +106,6 @@
 
   .page-container {
     @apply container mx-auto px-4 py-8 min-h-[calc(100vh-4rem)];
-  }
-
-  .metallic-surface {
-    background: linear-gradient(135deg, #2c2c2c 0%, #404040 50%, #2c2c2c 100%);
-    border: 1px solid #555;
-    box-shadow: 
-      inset 0 1px 0 rgba(255,255,255,0.1),
-      inset 0 -1px 0 rgba(0,0,0,0.5),
-      0 2px 4px rgba(0,0,0,0.3);
-  }
-  
-  .chrome-border {
-    border: 2px solid transparent;
-    background: linear-gradient(45deg, #c0c0c0, #a9a9a9, #c0c0c0) border-box;
-    background-clip: padding-box;
-    position: relative;
-  }
-  
-  .chrome-border::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #c0c0c0, #a9a9a9, #c0c0c0);
-    border-radius: inherit;
-    z-index: -1;
-  }
-  
-  .dashboard-card {
-    @apply metallic-surface rounded-lg p-6;
-    background: linear-gradient(135deg, #2c2c2c 0%, #363636 50%, #2c2c2c 100%);
-    border: 1px solid #555;
-    box-shadow: 
-      0 8px 32px rgba(0,0,0,0.4),
-      inset 0 1px 0 rgba(255,255,255,0.1),
-      inset 0 -1px 0 rgba(0,0,0,0.5);
-    transition: all 0.3s ease;
-  }
-  
-  .dashboard-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 
-      0 12px 40px rgba(255,46,46,0.2),
-      inset 0 1px 0 rgba(255,255,255,0.2),
-      inset 0 -1px 0 rgba(0,0,0,0.5);
-  }
-  
-  .engine-glow {
-    animation: engine-pulse 2s ease-in-out infinite;
-  }
-  
-  .metallic-glint {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .metallic-glint::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-    transform: rotate(45deg) translateX(-100%);
-    transition: transform 0.6s ease;
-  }
-  
-  .metallic-glint:hover::before {
-    transform: rotate(45deg) translateX(100%);
-  }
-
-  .bg-dark-asphalt {
-    background-color: #1a1a1a;
-  }
-
-  .bg-dark-asphalt-light {
-    background-color: #2a2a2a;
-  }
-
-  .bg-carbon-fiber {
-    background-image: 
-      radial-gradient(circle at 25% 25%, #2c2c2c 2px, transparent 2px),
-      radial-gradient(circle at 75% 75%, #2c2c2c 2px, transparent 2px);
-    background-size: 20px 20px;
-  }
-
-  .blueprint-bg {
-    background-image: 
-      linear-gradient(rgba(0,191,255,0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,191,255,0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
   }
 
   .text-chrome-silver {
@@ -223,6 +137,14 @@
 
   .bg-engine-black {
     background-color: #1a1a1a;
+  }
+
+  .bg-dark-asphalt {
+    background-color: #1a1a1a;
+  }
+
+  .bg-dark-asphalt-light {
+    background-color: #2a2a2a;
   }
 
   .font-orbitron {
@@ -271,23 +193,5 @@
   }
   50% {
     box-shadow: 0 0 40px rgba(255, 46, 46, 0.8), 0 0 60px rgba(255, 46, 46, 0.4);
-  }
-}
-
-@keyframes rpm-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes metallic-shimmer {
-  0% {
-    background-position: -100% 0;
-  }
-  100% {
-    background-position: 100% 0;
   }
 }

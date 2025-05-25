@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,15 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom automotive theme colors
+				'engine-black': '#1a1a1a',
+				'metallic-grey': '#a0a0a0',
+				'chrome-silver': '#c0c0c0',
+				'racing-red': '#ff2e2e',
+				'neon-blue': '#00bfff',
+				'dark-asphalt': '#1a1a1a',
+				'performance-yellow': '#ffcc00'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -89,6 +98,11 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
+			},
+			fontFamily: {
+				'orbitron': ['Orbitron', 'monospace'],
+				'bebas': ['Bebas Neue', 'cursive'],
+				'poppins': ['Poppins', 'sans-serif']
 			}
 		}
 	},
