@@ -69,7 +69,7 @@ const HomePage: React.FC = () => {
             >
               <Link 
                 to="/hardware" 
-                className="dashboard-button flex items-center"
+                className="dashboard-button flex items-center hover:shadow-red-glow transition-all duration-300"
               >
                 Explore Mechanism <ChevronRight className="ml-2 w-4 h-4" />
               </Link>
@@ -148,9 +148,9 @@ const HomePage: React.FC = () => {
             >
               <div className="h-40 flex items-center justify-center">
                 <img 
-                  src="https://images.pexels.com/photos/190574/pexels-photo-190574.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                  src="https://i.postimg.cc/nVSJqZ8T/Chat-GPT-Image-May-25-2025-06-35-58-PM.png" 
                   alt="Crankshaft" 
-                  className="h-32 object-contain"
+                  className="h-32 object-contain rounded-2xl"
                 />
               </div>
               <h3 className="text-xl font-orbitron text-chrome-silver mt-4">Crankshaft</h3>
@@ -177,7 +177,7 @@ const HomePage: React.FC = () => {
                 <img 
                   src="https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
                   alt="Combustion Chamber" 
-                  className="h-32 object-contain"
+                  className="h-32 object-contain rounded-2xl"
                 />
               </div>
               <h3 className="text-xl font-orbitron text-chrome-silver mt-4">Combustion</h3>
@@ -204,7 +204,7 @@ const HomePage: React.FC = () => {
                 <img 
                   src="https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
                   alt="Valve System" 
-                  className="h-32 object-contain"
+                  className="h-32 object-contain rounded-2xl"
                 />
               </div>
               <h3 className="text-xl font-orbitron text-chrome-silver mt-4">Valve System</h3>
@@ -221,7 +221,7 @@ const HomePage: React.FC = () => {
           </div>
           
           <div className="text-center mt-12">
-            <Link to="/demo" className="dashboard-button inline-flex items-center">
+            <Link to="/demo" className="dashboard-button inline-flex items-center hover:shadow-red-glow transition-all duration-300">
               <Play className="mr-2 w-4 h-4" /> See it in action
             </Link>
           </div>

@@ -64,7 +64,7 @@ const ContactPage: React.FC = () => {
       <section className="mb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <motion.div 
-            className="bento-card flex flex-col items-center text-center p-6"
+            className="bento-card flex flex-col items-center text-center p-6 hover:shadow-neon transition-all duration-300"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -79,7 +79,7 @@ const ContactPage: React.FC = () => {
           </motion.div>
           
           <motion.div 
-            className="bento-card flex flex-col items-center text-center p-6"
+            className="bento-card flex flex-col items-center text-center p-6 hover:shadow-neon transition-all duration-300"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -94,7 +94,7 @@ const ContactPage: React.FC = () => {
           </motion.div>
           
           <motion.div 
-            className="bento-card flex flex-col items-center text-center p-6"
+            className="bento-card flex flex-col items-center text-center p-6 hover:shadow-neon transition-all duration-300"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -109,7 +109,7 @@ const ContactPage: React.FC = () => {
           </motion.div>
           
           <motion.div 
-            className="bento-card flex flex-col items-center text-center p-6"
+            className="bento-card flex flex-col items-center text-center p-6 hover:shadow-neon transition-all duration-300"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -199,7 +199,7 @@ const ContactPage: React.FC = () => {
             
             <button 
               type="submit" 
-              className="dashboard-button w-full flex items-center justify-center"
+              className="dashboard-button w-full flex items-center justify-center hover:shadow-red-glow transition-all duration-300"
             >
               Send Message <Send className="ml-2 h-4 w-4" />
             </button>
@@ -253,22 +253,22 @@ const ContactPage: React.FC = () => {
           <h2 className="section-title">Connect With Us</h2>
           
           <div className="grid grid-cols-2 gap-4">
-            <a href="#" className="bento-card p-4 flex items-center hover:border-neon-blue transition-colors">
+            <a href="#" className="bento-card p-4 flex items-center hover:shadow-neon transition-all duration-300">
               <Github className="h-6 w-6 text-metallic-grey mr-3" />
               <span className="text-chrome-silver font-orbitron">GitHub</span>
             </a>
             
-            <a href="#" className="bento-card p-4 flex items-center hover:border-neon-blue transition-colors">
+            <a href="#" className="bento-card p-4 flex items-center hover:shadow-neon transition-all duration-300">
               <Linkedin className="h-6 w-6 text-metallic-grey mr-3" />
               <span className="text-chrome-silver font-orbitron">LinkedIn</span>
             </a>
             
-            <a href="#" className="bento-card p-4 flex items-center hover:border-neon-blue transition-colors">
+            <a href="#" className="bento-card p-4 flex items-center hover:shadow-neon transition-all duration-300">
               <Twitter className="h-6 w-6 text-metallic-grey mr-3" />
               <span className="text-chrome-silver font-orbitron">Twitter</span>
             </a>
             
-            <a href="#" className="bento-card p-4 flex items-center hover:border-neon-blue transition-colors">
+            <a href="#" className="bento-card p-4 flex items-center hover:shadow-neon transition-all duration-300">
               <Instagram className="h-6 w-6 text-metallic-grey mr-3" />
               <span className="text-chrome-silver font-orbitron">Instagram</span>
             </a>
