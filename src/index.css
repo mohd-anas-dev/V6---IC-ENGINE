@@ -53,6 +53,53 @@
 }
 
 @layer components {
+  .dashboard-button {
+    @apply bg-engine-black text-white border border-metallic-grey rounded-md px-4 py-2 
+           transition-all duration-300 hover:bg-racing-red hover:border-chrome-silver 
+           hover:shadow-red-glow focus:outline-none font-orbitron;
+  }
+
+  .bento-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+
+  .bento-card {
+    @apply bg-engine-black border border-metallic-grey rounded-lg p-4 
+           transition-all duration-300 hover:border-neon-blue hover:shadow-neon
+           bg-opacity-80 backdrop-blur-sm;
+  }
+
+  .metal-panel {
+    @apply bg-gradient-to-b from-metallic-grey to-engine-black 
+           border border-chrome-silver rounded-lg shadow-md;
+  }
+
+  .blueprint-bg {
+    @apply bg-dark-asphalt bg-blueprint bg-opacity-10;
+  }
+
+  .carbon-fiber-bg {
+    @apply bg-engine-black bg-carbon-fiber;
+  }
+
+  .nav-link {
+    @apply text-chrome-silver hover:text-racing-red transition-colors duration-300
+           px-3 py-2 rounded-md text-sm font-medium font-orbitron;
+  }
+
+  .nav-link.active {
+    @apply text-neon-blue border-b-2 border-neon-blue;
+  }
+
+  .section-title {
+    @apply text-2xl md:text-3xl font-bold font-orbitron 
+           text-chrome-silver mb-6 border-b border-metallic-grey pb-2;
+  }
+
+  .page-container {
+    @apply container mx-auto px-4 py-8 min-h-[calc(100vh-4rem)];
+  }
+
   .metallic-surface {
     background: linear-gradient(135deg, #2c2c2c 0%, #404040 50%, #2c2c2c 100%);
     border: 1px solid #555;
@@ -125,14 +172,6 @@
     transform: rotate(45deg) translateX(100%);
   }
 
-  .dashboard-button {
-    @apply px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold rounded-lg transition-all duration-300 hover:from-red-600 hover:to-red-700 hover:scale-105 shadow-lg hover:shadow-xl;
-  }
-
-  .metal-panel {
-    @apply bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300;
-  }
-
   .bg-dark-asphalt {
     background-color: #1a1a1a;
   }
@@ -182,6 +221,10 @@
     background-color: #00bfff;
   }
 
+  .bg-engine-black {
+    background-color: #1a1a1a;
+  }
+
   .font-orbitron {
     font-family: 'Orbitron', monospace;
   }
@@ -189,6 +232,23 @@
   .font-bebas {
     font-family: 'Bebas Neue', cursive;
   }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-asphalt;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-metallic-grey rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-racing-red;
 }
 
 @layer utilities {
