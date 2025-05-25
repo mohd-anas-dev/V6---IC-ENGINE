@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './layouts/Layout';
@@ -8,10 +7,12 @@ import TeamPage from './pages/Team';
 import HardwarePage from './pages/Hardware';
 import DemoPage from './pages/Demo';
 import ContactPage from './pages/Contact';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />

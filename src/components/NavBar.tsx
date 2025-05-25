@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Gauge, Settings } from 'lucide-react';
 
@@ -7,6 +6,16 @@ const NavBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  
+  const scrollToTop = useCallback(() => {
+    const currentScroll = window.scrollY;
+    const duration = Math.min(1000, currentScroll * 0.5); // Adjust duration based on scroll distance, max 1s
+    
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, []);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +25,13 @@ const NavBar: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
+  const handleNavClick = (path: string) => {
+    if (location.pathname === path) {
+      scrollToTop();
+    }
+    setIsOpen(false);
+  };
   
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -29,29 +45,53 @@ const NavBar: React.FC = () => {
     <nav className={navClasses}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2" onClick={() => handleNavClick('/')}>
             <Settings className="h-8 w-8 text-racing-red" />
             <span className="text-xl font-bold font-orbitron text-chrome-silver">V6 ENGINE</span>
           </Link>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>
+            <Link 
+              to="/" 
+              className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
+              onClick={() => handleNavClick('/')}
+            >
               Home
             </Link>
-            <Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}>
+            <Link 
+              to="/about" 
+              className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}
+              onClick={() => handleNavClick('/about')}
+            >
               About
             </Link>
-            <Link to="/team" className={`nav-link ${location.pathname === '/team' ? 'active' : ''}`}>
+            <Link 
+              to="/team" 
+              className={`nav-link ${location.pathname === '/team' ? 'active' : ''}`}
+              onClick={() => handleNavClick('/team')}
+            >
               Team
             </Link>
-            <Link to="/hardware" className={`nav-link ${location.pathname === '/hardware' ? 'active' : ''}`}>
+            <Link 
+              to="/hardware" 
+              className={`nav-link ${location.pathname === '/hardware' ? 'active' : ''}`}
+              onClick={() => handleNavClick('/hardware')}
+            >
               Hardware
             </Link>
-            <Link to="/demo" className={`nav-link ${location.pathname === '/demo' ? 'active' : ''}`}>
+            <Link 
+              to="/demo" 
+              className={`nav-link ${location.pathname === '/demo' ? 'active' : ''}`}
+              onClick={() => handleNavClick('/demo')}
+            >
               Demo
             </Link>
-            <Link to="/contact" className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}>
+            <Link 
+              to="/contact" 
+              className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}
+              onClick={() => handleNavClick('/contact')}
+            >
               Contact
             </Link>
             
@@ -63,7 +103,7 @@ const NavBar: React.FC = () => {
           </div>
           
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="md:hidden text-chrome-silver hover:text-racing-red transition-colors"
             onClick={toggleMenu}
             aria-label="Toggle menu"
@@ -79,42 +119,42 @@ const NavBar: React.FC = () => {
               <Link 
                 to="/" 
                 className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
-                onClick={() => setIsOpen(false)}
+                onClick={() => handleNavClick('/')}
               >
                 Home
               </Link>
               <Link 
                 to="/about" 
                 className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}
-                onClick={() => setIsOpen(false)}
+                onClick={() => handleNavClick('/about')}
               >
                 About
               </Link>
               <Link 
                 to="/team" 
                 className={`nav-link ${location.pathname === '/team' ? 'active' : ''}`}
-                onClick={() => setIsOpen(false)}
+                onClick={() => handleNavClick('/team')}
               >
                 Team
               </Link>
               <Link 
                 to="/hardware" 
                 className={`nav-link ${location.pathname === '/hardware' ? 'active' : ''}`}
-                onClick={() => setIsOpen(false)}
+                onClick={() => handleNavClick('/hardware')}
               >
                 Hardware
               </Link>
               <Link 
                 to="/demo" 
                 className={`nav-link ${location.pathname === '/demo' ? 'active' : ''}`}
-                onClick={() => setIsOpen(false)}
+                onClick={() => handleNavClick('/demo')}
               >
                 Demo
               </Link>
               <Link 
                 to="/contact" 
                 className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}
-                onClick={() => setIsOpen(false)}
+                onClick={() => handleNavClick('/contact')}
               >
                 Contact
               </Link>
