@@ -22,13 +22,13 @@ const HardwarePage: React.FC = () => {
       case 'pistons':
         return {
           title: "High-Performance Pistons",
-          description: "Our custom-designed pistons are crafted from high-grade aluminum alloy, featuring precision ring grooves and optimized skirt profiles. Each piston undergoes rigorous quality control to ensure perfect fit and performance.",
+          description: "Our custom-designed pistons are 3D-printed in high-quality plastic to replicate real high-performance designs. They feature detailed ring grooves and optimized skirt profiles for accurate representation and smooth operation within the V6 engine model.",
           specs: [
-            "Material: Forged Aluminum Alloy",
-            "Compression Ratio: 10.5:1",
-            "Piston Rings: 3 (Compression, Oil Control)",
-            "Surface Treatment: Thermal Barrier Coating",
-            "Weight: 320g each"
+            "Material: PLA+ (3D Printed Plastic)",
+            "Compression Ratio: Modeled at 10.5:1",
+            "Piston Rings: 3 ",
+            "Surface Treatment: Modeled Thermal Barrier Texture",
+            "Weight: 45g each"
           ],
           animation: <PistonAnimation />,
           backgroundImage: "https://i.postimg.cc/Rh4GDLS1/Chat-GPT-Image-May-26-2025-12-03-52-AM.png"
@@ -36,13 +36,13 @@ const HardwarePage: React.FC = () => {
       case 'crankshaft':
         return {
           title: "Precision-Engineered Crankshaft",
-          description: "The crankshaft is the backbone of our V6 engine, machined from a solid billet of forged steel. Its counterweighted design ensures smooth operation throughout the RPM range, with precision-ground journals for optimal bearing contact.",
+          description: "The crankshaft is 3D-printed to replicate a real forged-steel design, serving as the backbone of our V6 engine model. Its counterweights and detailed journals ensure smooth rotation and accurate bearing simulation.",
           specs: [
-            "Material: Forged Steel",
+            "Material: 3D-printed Plastic (for model representation)",
             "Configuration: 6-throw, 60° V6",
-            "Main Bearings: 4",
-            "Counterweights: 6",
-            "Treatment: Nitride hardening"
+            "Main Bearings: 4 (Modeled)",
+            "Counterweights: 6 (Integrated in Design)",
+            "Treatment: Matte Plastic"
           ],
           animation: <CrankshaftAnimation />,
           backgroundImage: "https://i.postimg.cc/Kzy51DMX/Chat-GPT-Image-May-26-2025-12-06-38-AM.png"
@@ -50,7 +50,7 @@ const HardwarePage: React.FC = () => {
       case 'combustion':
         return {
           title: "Advanced Combustion Chamber",
-          description: "Our combustion chamber design optimizes the flame front propagation for efficient fuel burning. The hemispherical shape with strategically positioned spark plugs creates the ideal environment for complete combustion.",
+          description: "Our combustion chamber is modeled to demonstrate optimized flame front propagation. The hemispherical shape and strategically placed mock spark plugs replicate the geometry for efficient combustion in real engines.",
           specs: [
             "Chamber Shape: Semi-Hemispherical",
             "Volume: 52cc",
@@ -64,10 +64,10 @@ const HardwarePage: React.FC = () => {
       case 'valves':
         return {
           title: "Precision Valve Timing System",
-          description: "The valve train features dual overhead camshafts (DOHC) with variable valve timing capability. The system includes sodium-filled exhaust valves for better heat dissipation and hollow intake valves to reduce reciprocating mass.",
+          description: "The valve train is modeled with a DOHC layout to showcase high-performance engine design. Though non-functional, it simulates variable valve timing and features representational sodium-filled exhaust and hollow intake valves for thermal and weight management.",
           specs: [
-            "Configuration: DOHC (Dual Overhead Camshaft)",
-            "Valves per Cylinder: 4 (2 Intake, 2 Exhaust)",
+            "Configuration: DOHC (Modeled)",
+            "Valves per Cylinder: 4 (2 Intake, 2 Exhaust – Simulated)",
             "Intake Valve Diameter: 35mm",
             "Exhaust Valve Diameter: 30mm",
             "Cam Lift: 10.5mm intake, 9.8mm exhaust"
