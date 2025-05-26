@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import { 
   Mail, 
   MapPin, 
@@ -21,6 +22,7 @@ const ContactPage: React.FC = () => {
   });
   
   const [notification, setNotification] = useState<{ message: string | null, type: 'success' | 'error' | null }>({ message: null, type: null });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -30,24 +32,54 @@ const ContactPage: React.FC = () => {
     }));
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real application, this would submit the form data
-    console.log('Form submitted:', formState);
-    // Reset form
-    setFormState({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
-    // Show success message
-    setNotification({ message: 'Thank you for your message! We will get back to you soon.', type: 'success' });
+    setIsSubmitting(true);
     
-    // Hide notification after 5 seconds
-    setTimeout(() => {
-      setNotification({ message: null, type: null });
-    }, 5000);
+    try {
+      await emailjs.send(
+        'service_uqkv1q8',
+        'template_va9eagm',
+        {
+          from_name: formState.name,
+          from_email: formState.email,
+          subject: `[Contact Form] ${formState.subject} - From: ${formState.name}`,
+          message: formState.message,
+          to_name: 'Engine Pulse Drive',
+          reply_to: formState.email,
+          user_email: formState.email,
+          user_name: formState.name,
+        },
+        'mHHshUq6ARPHwehWx'
+      );
+
+      // Reset form
+      setFormState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+      
+      // Show success message
+      setNotification({ 
+        message: 'Thank you for your message! We will get back to you soon.', 
+        type: 'success' 
+      });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setNotification({ 
+        message: 'Sorry, there was an error sending your message. Please try again later.', 
+        type: 'error' 
+      });
+    } finally {
+      setIsSubmitting(false);
+      
+      // Hide notification after 5 seconds
+      setTimeout(() => {
+        setNotification({ message: null, type: null });
+      }, 5000);
+    }
   };
   
   return (
@@ -222,8 +254,9 @@ const ContactPage: React.FC = () => {
             <button 
               type="submit" 
               className="dashboard-button w-full flex items-center justify-center hover:shadow-red-glow transition-all duration-300"
+              disabled={isSubmitting}
             >
-              Send Message <Send className="ml-2 h-4 w-4" />
+              {isSubmitting ? 'Sending...' : 'Send Message'} <Send className="ml-2 h-4 w-4" />
             </button>
           </form>
         </motion.div>
@@ -305,7 +338,9 @@ const ContactPage: React.FC = () => {
           animate={{ opacity: 1, x: 0, y: 0 }}
           exit={{ opacity: 0, x: -50, y: 50 }}
           transition={{ duration: 0.5 }}
-          className={`fixed bottom-4 left-4 p-4 rounded-lg shadow-lg z-50 ${notification.type === 'success' ? 'bg-racing-red metal-panel' : 'bg-red-800'}`}
+          className={`fixed bottom-4 left-4 p-4 rounded-lg shadow-lg z-50 ${
+            notification.type === 'success' ? 'bg-racing-red metal-panel' : 'bg-red-800'
+          }`}
         >
           <p className="text-black font-orbitron">{notification.message}</p>
         </motion.div>
