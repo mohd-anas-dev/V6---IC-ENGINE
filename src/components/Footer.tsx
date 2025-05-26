@@ -20,28 +20,36 @@ const Footer: React.FC = () => {
           
           <div className="flex space-x-4">
             <a 
-              href="#" 
+              href="https://github.com/I-stack-glitch" 
+              target='_blank'
+              rel="noopener noreferrer"
               className="text-metallic-grey hover:text-racing-red transition-colors"
               aria-label="GitHub"
             >
               <Github size={20} />
             </a>
             <a 
-              href="#" 
+              href="https://mail.google.com/mail/u/0/#inbox?compose=new" 
+              target='_blank'
+              rel="noopener noreferrer"
               className="text-metallic-grey hover:text-racing-red transition-colors"
               aria-label="Mail"
             >
               <Mail size={20} />
             </a>
             <a 
-              href="#" 
+              href="https://www.linkedin.com/in/mohammed-anas-b1197b264/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" 
+              target ="_blank"
+              rel="noopener noreferrer"
               className="text-metallic-grey hover:text-racing-red transition-colors"
               aria-label="LinkedIn"
             >
               <Linkedin size={20} />
             </a>
             <a 
-              href="#" 
+              href="https://www.instagram.com/ixm_mohammed/" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-metallic-grey hover:text-racing-red transition-colors"
               aria-label="Instagram"
             >

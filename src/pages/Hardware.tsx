@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
@@ -31,7 +30,8 @@ const HardwarePage: React.FC = () => {
             "Surface Treatment: Thermal Barrier Coating",
             "Weight: 320g each"
           ],
-          animation: <PistonAnimation />
+          animation: <PistonAnimation />,
+          backgroundImage: "https://i.postimg.cc/Rh4GDLS1/Chat-GPT-Image-May-26-2025-12-03-52-AM.png"
         };
       case 'crankshaft':
         return {
@@ -44,7 +44,8 @@ const HardwarePage: React.FC = () => {
             "Counterweights: 6",
             "Treatment: Nitride hardening"
           ],
-          animation: <CrankshaftAnimation />
+          animation: <CrankshaftAnimation />,
+          backgroundImage: "https://i.postimg.cc/Kzy51DMX/Chat-GPT-Image-May-26-2025-12-06-38-AM.png"
         };
       case 'combustion':
         return {
@@ -57,7 +58,8 @@ const HardwarePage: React.FC = () => {
             "Swirl Ratio: 0.8",
             "Quench Area: Optimized for emissions"
           ],
-          animation: <CombustionAnimation />
+          animation: <CombustionAnimation />,
+          backgroundImage: "https://i.postimg.cc/s2g6Vc7T/Detailed-Engine-Model-in-3-D.png"
         };
       case 'valves':
         return {
@@ -70,14 +72,16 @@ const HardwarePage: React.FC = () => {
             "Exhaust Valve Diameter: 30mm",
             "Cam Lift: 10.5mm intake, 9.8mm exhaust"
           ],
-          animation: <ValveAnimation />
+          animation: <ValveAnimation />,
+          backgroundImage: "https://i.postimg.cc/c1tsx7c1/Chat-GPT-Image-May-25-2025-11-57-02-PM.png"
         };
       default:
         return {
           title: "",
           description: "",
           specs: [],
-          animation: null
+          animation: null,
+          backgroundImage: ""
         };
     }
   };
@@ -189,14 +193,21 @@ const HardwarePage: React.FC = () => {
           className="flex flex-col lg:flex-row gap-8 p-6 metal-panel"
         >
           {/* Component Visualization */}
-          <div className="lg:w-1/2 flex justify-center items-center p-8 bg-dark-asphalt rounded-lg">
-            {currentContent.animation}
+          <div className="lg:w-1/2 relative flex justify-center items-center p-8 bg-dark-asphalt rounded-lg">
+            <img 
+              src={currentContent.backgroundImage}
+              alt="Component Background"
+              className="absolute inset-0 w-full h-full object-cover opacity-50 rounded-lg"
+            />
+            <div className="relative z-10 w-full h-64">
+              {currentContent.animation}
+            </div>
           </div>
           
           {/* Component Description */}
           <div className="lg:w-1/2">
-            <h3 className="text-2xl font-orbitron text-chrome-silver mb-4">{currentContent.title}</h3>
-            <p className="text-metallic-grey mb-6">{currentContent.description}</p>
+            <h3 className="text-2xl font-orbitron text-black mb-4">{currentContent.title}</h3>
+            <p className="text-black mb-6">{currentContent.description}</p>
             
             <div className="bg-engine-black p-4 rounded-lg border border-metallic-grey">
               <h4 className="text-lg font-orbitron text-chrome-silver mb-3">Technical Specifications</h4>

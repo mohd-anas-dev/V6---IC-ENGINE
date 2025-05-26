@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Wrench, Cpu, PenTool, LineChart, Users, Github, Linkedin, Mail } from 'lucide-react';
+import { Wrench, Cpu, PenTool, LineChart, Users, Github, Linkedin, Instagram } from 'lucide-react';
 
 const TeamPage: React.FC = () => {
   const teamMembers = [
@@ -10,7 +10,10 @@ const TeamPage: React.FC = () => {
       photo: "https://i.postimg.cc/3wq1C0b1/arsalan2.jpg",
       expertise: "Research and Documentation",
       icon: <Wrench className="h-5 w-5" />,
-      bio: "Arsalan supports the team by researching engine designs and helping prepare project documentation."
+      bio: "Arsalan supports the team by researching engine designs and helping prepare project documentation.",
+      github: "#",
+      linkedin: "#",
+      instagram: "#"
     },
     {
       name: "Mohammed Anas",
@@ -18,7 +21,10 @@ const TeamPage: React.FC = () => {
       photo: "https://i.postimg.cc/ZY8P0QZV/IMG-20241219-WA0011.jpg",
       expertise: "Control Systems",
       icon: <Cpu className="h-5 w-5" />,
-      bio: "Mohd Anas leads the assembly of parts, ensuring the engine prototype runs smoothly and making adjustments as needed."
+      bio: "Mohd Anas leads the assembly of parts, ensuring the engine prototype runs smoothly and making adjustments as needed.",
+      github: "https://github.com/I-stack-glitch",
+      linkedin: "https://www.linkedin.com/in/mohammed-anas-b1197b264/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      instagram: "https://www.instagram.com/ixm_mohammed/"
     },
     {
       name: "Sayed Muhammad Anas",
@@ -26,7 +32,10 @@ const TeamPage: React.FC = () => {
       photo: "https://i.postimg.cc/T1McBMxW/Sayed-Anas2.jpg",
       expertise: "Motor Engineering",
       icon: <PenTool className="h-5 w-5" />,
-      bio: "Sayed Anas manages the integration of the 12V DC motor and power supply, ensuring reliable operation of the engine prototype."
+      bio: "Sayed Anas manages the integration of the 12V DC motor and power supply, ensuring reliable operation of the engine prototype.",
+      github: "https://github.com/AnasSayed221bakerstreet",
+      linkedin: "https://www.linkedin.com/in/anas-sayed-011547367/",
+      instagram: "https://www.instagram.com/anassayed61/?next=%2F"
     },
     {
       name: "Mohammed Zuhaib Khan",
@@ -34,7 +43,10 @@ const TeamPage: React.FC = () => {
       photo: "https://i.postimg.cc/1z7CCj4p/Zuhaib.jpg",
       expertise: "3D Modeling",
       icon: <LineChart className="h-5 w-5" />,
-      bio: "Zuhaib creates and refines 3D models of engine parts, making sure they fit well and print correctly."
+      bio: "Zuhaib creates and refines 3D models of engine parts, making sure they fit well and print correctly.",
+      github: "#",
+      linkedin: "#",
+      instagram: "#"
     }
   ];
 
@@ -128,14 +140,14 @@ const TeamPage: React.FC = () => {
                         <span className="text-chrome-silver font-orbitron">Expertise:</span> {member.expertise}
                       </p>
                       <div className="flex space-x-2">
-                        <a href="#" className="text-metallic-grey hover:text-racing-red transition-colors">
+                        <a href={member.github} target="_blank" rel="noopener noreferrer" className="text-metallic-grey hover:text-racing-red transition-colors">
                           <Github className="w-4 h-4" />
                         </a>
-                        <a href="#" className="text-metallic-grey hover:text-racing-red transition-colors">
+                        <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-metallic-grey hover:text-racing-red transition-colors">
                           <Linkedin className="w-4 h-4" />
                         </a>
-                        <a href="#" className="text-metallic-grey hover:text-racing-red transition-colors">
-                          <Mail className="w-4 h-4" />
+                        <a href={member.instagram} target="_blank" rel="noopener noreferrer" className="text-metallic-grey hover:text-racing-red transition-colors">
+                          <Instagram className="w-4 h-4" />
                         </a>
                       </div>
                     </div>
@@ -149,14 +161,14 @@ const TeamPage: React.FC = () => {
                     <p className="text-sm text-neon-blue mb-4">{member.role}</p>
                     <p className="text-metallic-grey">{member.bio}</p>
                     <div className="mt-4 flex justify-center space-x-3">
-                      <a href="#" className="text-metallic-grey hover:text-racing-red transition-colors">
+                      <a href={member.github} target="_blank" rel="noopener noreferrer" className="text-metallic-grey hover:text-racing-red transition-colors">
                         <Github className="w-5 h-5" />
                       </a>
-                      <a href="#" className="text-metallic-grey hover:text-racing-red transition-colors">
+                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-metallic-grey hover:text-racing-red transition-colors">
                         <Linkedin className="w-5 h-5" />
                       </a>
-                      <a href="#" className="text-metallic-grey hover:text-racing-red transition-colors">
-                        <Mail className="w-5 h-5" />
+                      <a href={member.instagram} target="_blank" rel="noopener noreferrer" className="text-metallic-grey hover:text-racing-red transition-colors">
+                        <Instagram className="w-5 h-5" />
                       </a>
                     </div>
                   </div>

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
@@ -21,6 +20,8 @@ const ContactPage: React.FC = () => {
     message: ''
   });
   
+  const [notification, setNotification] = useState<{ message: string | null, type: 'success' | 'error' | null }>({ message: null, type: null });
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormState(prev => ({
@@ -40,12 +41,33 @@ const ContactPage: React.FC = () => {
       subject: '',
       message: ''
     });
-    // Show success message (would be implemented with state in a real app)
-    alert('Thank you for your message! We will get back to you soon.');
+    // Show success message
+    setNotification({ message: 'Thank you for your message! We will get back to you soon.', type: 'success' });
+    
+    // Hide notification after 5 seconds
+    setTimeout(() => {
+      setNotification({ message: null, type: null });
+    }, 5000);
   };
   
   return (
     <div className="page-container">
+      <style>{`
+        input:-webkit-autofill,
+        textarea:-webkit-autofill {
+          -webkit-text-fill-color: #C0C0C0 !important; /* chrome-silver */
+          -webkit-box-shadow: 0 0 0px 1000px #222222 inset !important; /* engine-black */
+          transition: background-color 5000s ease-in-out 0s;
+        }
+        input::placeholder,
+        textarea::placeholder {
+          color: #C0C0C0 !important; /* chrome-silver */
+          opacity: 1;
+        }
+        input[name="subject"]::placeholder {
+          color: #00BFFF !important; /* neon-blue */
+        }
+      `}</style>
       {/* Page Header */}
       <motion.div 
         className="mb-12 text-center"
@@ -148,7 +170,7 @@ const ContactPage: React.FC = () => {
                 value={formState.name}
                 onChange={handleChange}
                 required
-                className="w-full bg-engine-black border border-metallic-grey rounded-md p-3 text-chrome-silver focus:border-racing-red focus:outline-none transition-colors"
+                className="w-full bg-engine-black border border-metallic-grey rounded-md p-3 text-neon-blue focus:border-racing-red focus:outline-none transition-colors"
               />
             </div>
             
@@ -163,7 +185,7 @@ const ContactPage: React.FC = () => {
                 value={formState.email}
                 onChange={handleChange}
                 required
-                className="w-full bg-engine-black border border-metallic-grey rounded-md p-3 text-chrome-silver focus:border-racing-red focus:outline-none transition-colors"
+                className="w-full bg-engine-black border border-metallic-grey rounded-md p-3 text-neon-blue focus:border-racing-red focus:outline-none transition-colors"
               />
             </div>
             
@@ -178,7 +200,7 @@ const ContactPage: React.FC = () => {
                 value={formState.subject}
                 onChange={handleChange}
                 required
-                className="w-full bg-engine-black border border-metallic-grey rounded-md p-3 text-chrome-silver focus:border-racing-red focus:outline-none transition-colors"
+                className="w-full bg-engine-black border border-metallic-grey rounded-md p-3 text-neon-blue focus:border-racing-red focus:outline-none transition-colors"
               />
             </div>
             
@@ -193,7 +215,7 @@ const ContactPage: React.FC = () => {
                 onChange={handleChange}
                 required
                 rows={5}
-                className="w-full bg-engine-black border border-metallic-grey rounded-md p-3 text-chrome-silver focus:border-racing-red focus:outline-none transition-colors resize-none"
+                className="w-full bg-engine-black border border-metallic-grey rounded-md p-3 text-neon-blue focus:border-racing-red focus:outline-none transition-colors resize-none"
               ></textarea>
             </div>
             
@@ -253,28 +275,41 @@ const ContactPage: React.FC = () => {
           <h2 className="section-title">Connect With Us</h2>
           
           <div className="grid grid-cols-2 gap-4">
-            <a href="#" className="bento-card p-4 flex items-center hover:shadow-neon transition-all duration-300">
+            <a href="https://github.com/I-stack-glitch" target="_blank" rel="noopener noreferrer" className="bento-card p-4 flex items-center hover:shadow-neon transition-all duration-300">
               <Github className="h-6 w-6 text-metallic-grey mr-3" />
               <span className="text-chrome-silver font-orbitron">GitHub</span>
             </a>
             
-            <a href="#" className="bento-card p-4 flex items-center hover:shadow-neon transition-all duration-300">
+            <a href="https://www.linkedin.com/in/mohammed-anas-b1197b264/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" className="bento-card p-4 flex items-center hover:shadow-neon transition-all duration-300">
               <Linkedin className="h-6 w-6 text-metallic-grey mr-3" />
               <span className="text-chrome-silver font-orbitron">LinkedIn</span>
             </a>
             
-            <a href="#" className="bento-card p-4 flex items-center hover:shadow-neon transition-all duration-300">
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" className="bento-card p-4 flex items-center hover:shadow-neon transition-all duration-300">
               <Twitter className="h-6 w-6 text-metallic-grey mr-3" />
               <span className="text-chrome-silver font-orbitron">Twitter</span>
             </a>
             
-            <a href="#" className="bento-card p-4 flex items-center hover:shadow-neon transition-all duration-300">
+            <a href="https://www.instagram.com/ixm_mohammed/" target="_blank" rel="noopener noreferrer" className="bento-card p-4 flex items-center hover:shadow-neon transition-all duration-300">
               <Instagram className="h-6 w-6 text-metallic-grey mr-3" />
               <span className="text-chrome-silver font-orbitron">Instagram</span>
             </a>
           </div>
         </motion.div>
       </section>
+
+      {/* Custom Notification */}
+      {notification.message && (
+        <motion.div
+          initial={{ opacity: 0, x: -50, y: 50 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          exit={{ opacity: 0, x: -50, y: 50 }}
+          transition={{ duration: 0.5 }}
+          className={`fixed bottom-4 left-4 p-4 rounded-lg shadow-lg z-50 ${notification.type === 'success' ? 'bg-racing-red metal-panel' : 'bg-red-800'}`}
+        >
+          <p className="text-black font-orbitron">{notification.message}</p>
+        </motion.div>
+      )}
     </div>
   );
 };
