@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
+import InfiniteScroll from '../components/animations/InfiniteScroll';
 import { 
   Mail, 
   MapPin, 
@@ -116,9 +117,9 @@ const ContactPage: React.FC = () => {
       
       {/* Contact Information */}
       <section className="mb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <InfiniteScroll speed={50} className="py-4">
           <motion.div 
-            className="bento-card flex flex-col items-center text-center p-6 hover:shadow-neon transition-all duration-300"
+            className="bento-card flex flex-col items-center text-center p-6 hover:shadow-neon transition-all duration-300 mx-4 w-64"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -133,7 +134,7 @@ const ContactPage: React.FC = () => {
           </motion.div>
           
           <motion.div 
-            className="bento-card flex flex-col items-center text-center p-6 hover:shadow-neon transition-all duration-300"
+            className="bento-card flex flex-col items-center text-center p-6 hover:shadow-neon transition-all duration-300 mx-4 w-64"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -148,7 +149,7 @@ const ContactPage: React.FC = () => {
           </motion.div>
           
           <motion.div 
-            className="bento-card flex flex-col items-center text-center p-6 hover:shadow-neon transition-all duration-300"
+            className="bento-card flex flex-col items-center text-center p-6 hover:shadow-neon transition-all duration-300 mx-4 w-64"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -163,7 +164,7 @@ const ContactPage: React.FC = () => {
           </motion.div>
           
           <motion.div 
-            className="bento-card flex flex-col items-center text-center p-6 hover:shadow-neon transition-all duration-300"
+            className="bento-card flex flex-col items-center text-center p-6 hover:shadow-neon transition-all duration-300 mx-4 w-64"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -176,7 +177,7 @@ const ContactPage: React.FC = () => {
             <p className="text-metallic-grey">Monday - Friday</p>
             <p className="text-metallic-grey">9:00 AM - 5:00 PM GST</p>
           </motion.div>
-        </div>
+        </InfiniteScroll>
       </section>
       
       {/* Contact Form and Map */}
