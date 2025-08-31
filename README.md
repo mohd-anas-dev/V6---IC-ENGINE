@@ -1,68 +1,106 @@
-Welcome to your SelfMade Project
-Project Info
+# V6 IC Engine 🔧🚀
 
+**V6 IC Engine** is an interactive showcase project demonstrating the mechanics and engineering of a **V6 internal combustion engine**. It’s designed to give users a hands-on experience exploring engine components, motion, and performance in a visually engaging way.
 
+![V6 Engine Screenshot](https://mohdanasfolio.netlify.app/ProjectsImage/V6Engine.png) 
 
-How Can I Edit This Code?
-There are several ways to work on and edit this project:
+---
 
-Use SelfMade
-Simply visit the SelfMade Project and start prompting.
-Changes made via SelfMade will be automatically committed to this repo.
+## Table of Contents
 
-Use Your Preferred IDE
-If you prefer working locally:
+* [Features](#features)
+* [Demo](#demo)
+* [Tech Stack](#tech-stack)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Future Improvements](#future-improvements)
+* [Contributing](#contributing)
+* [License](#license)
 
-sh
-Copy
-Edit
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Features
 
-# Step 3: Install dependencies.
-npm i
+* ⚙️ **Interactive Components** – Explore pistons, crankshaft, camshaft, and more
+* 🔍 **Detailed Descriptions** – Learn about each engine part and its function
+* 🖼 **Visual Animations** – Simulate engine motion with smooth animations
+* 📊 **Performance Parameters** – Visualize speed, torque, and efficiency data
+* 🌐 **Responsive Design** – Works on desktop and mobile devices
 
-# Step 4: Start the development server.
-npm run dev
-Edit Directly in GitHub
-Navigate to the file you want to change.
+---
 
-Click the "Edit" (pencil icon).
+## Demo
 
-Make your changes and commit them.
+Try the live app here: [V6 IC Engine Live](https://icenginev6.netlify.app/)
 
-Use GitHub Codespaces
-Go to the main page of the repo.
+---
 
-Click "Code" → "Codespaces" → "New Codespace".
+## Tech Stack
 
-Edit directly in the browser and commit changes.
+* **Frontend:** HTML5, CSS3, JavaScript, React.js
+* **Styling & Animations:** CSS Animations, Tailwind CSS
+* **Visualization:** Canvas / SVG animations
+* **State Management:** React Hooks (`useState`, `useEffect`)
 
-About This Project
-This website was built entirely by me, without the use of AI tools. Only a couple of relaxed, vibe-driven coding sessions went into its creation — no references to any websites or automated help. It's a hand-crafted, original project made with care.
+---
 
-Technologies Used
-Vite
+## Installation
 
-TypeScript
+Clone the repository and install dependencies:
 
-React
+```bash
+git clone https://github.com/yourusername/V6-IC-Engine.git
+cd V6-IC-Engine
+npm install
+```
 
-shadcn/ui
+Run the development server:
 
-Tailwind CSS
+```bash
+npm start
+```
 
-Deployment
-To publish the site:
+Your app should now be running at `http://localhost:3000`.
 
-Open SelfMade
+---
 
-Click on Share → Publish
+## Usage
 
-Custom Domain
-You can connect a custom domain by navigating to:
+1. Navigate through different engine components using the menu.
+2. Click on a component (e.g., Pistons, Crankshaft) to see detailed information.
+3. Watch live animations showing engine mechanics in action.
+4. Explore performance metrics for each engine component.
 
-Project → Settings → Domains → Connect Domain
+---
+
+## Future Improvements
+
+* 🌟 **3D Engine Model** for realistic interactions
+* 📈 **Interactive Performance Charts**
+* 🖥 **AR/VR Mode** for immersive learning
+* 🌙 **Dark Mode & Theme Customization**
+
+---
+
+## Contributing
+
+Contributions are welcome!
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## License
+
+This project is **MIT Licensed**. See `LICENSE` for details.
+
+---
+
+## Connect with Me
+
+* Portfolio: [MohdAnasFolio](https://mohdanasfolio.netlify.app)
+* GitHub: [Mohammed Anas](https://github.com/mohd-anas-dev)
