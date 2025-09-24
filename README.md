@@ -2,7 +2,7 @@
 
 **V6 IC Engine** is an interactive showcase project demonstrating the mechanics and engineering of a **V6 internal combustion engine**. It’s designed to give users a hands-on experience exploring engine components, motion, and performance in a visually engaging way.
 
-![ClarioSpace](https://i.postimg.cc/GhcnSbq9/image.png) 
+![V6 Engine Screenshot](https://mohdanasfolio.netlify.app/ProjectsImage/V6Engine.png) 
 
 ---
 
